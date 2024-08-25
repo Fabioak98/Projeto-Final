@@ -20,8 +20,8 @@ public class TokenService {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("API HealthCare")
-                    .withSubject(usuario.getLogin())
+                    .withIssuer("Projeto Final")
+                    .withSubject(usuario.getEmail())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
         } catch (JWTCreationException exception){
@@ -33,7 +33,7 @@ public class TokenService {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("API HealthCare")
+                    .withIssuer("Projeto Final")
                     .withSubject(usuario)
                     .withExpiresAt(Expira)
                     .sign(algoritmo);
@@ -46,7 +46,7 @@ public class TokenService {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.require(algoritmo)
-                    .withIssuer("API HealthCare")
+                    .withIssuer("Projeto Final")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();

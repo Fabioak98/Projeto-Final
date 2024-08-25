@@ -1,17 +1,17 @@
 package com.example.Projetofinal.domain.comprador;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Table(name="compradores")
-@Entity(name="Comprador")
+@Document
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Comprador {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private String id;
 
     private String nome;

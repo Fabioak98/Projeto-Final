@@ -1,6 +1,10 @@
 package com.example.Projetofinal.domain.produtos;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
-public interface ProdutoRepository extends JpaRepository<Produto, Long> {
+public interface ProdutoRepository extends MongoRepository<Produto,String>{
+    Page<DadosDetalhamentoProduto> quantidadeMinima(Pageable paginacao);
 }

@@ -1,32 +1,28 @@
 package com.example.Projetofinal.domain.user;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
 import lombok.*;
-import jakarta.persistence.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-@Table(name="usuario")
-@Entity(name="Usuario")
+@Document
+@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Usuario implements UserDetails {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private String id;
-    private String login;
+    private String email;
     private String senha;
 
     public Usuario(String email,String senha){
-        this.login = email;
+        this.email = email;
         this.senha = senha;
     }
 
@@ -42,7 +38,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getUsername() {
-        return login;
+        return email;
     }
 
     @Override
