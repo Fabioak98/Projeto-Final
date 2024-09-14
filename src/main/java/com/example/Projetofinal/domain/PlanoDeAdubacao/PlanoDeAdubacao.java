@@ -23,4 +23,17 @@ public class PlanoDeAdubacao {
 
     @DBRef
     private List<ItensPlano> itens;
+
+    public void ajustarDoses(Double doseJogada, int mesCorrente) {
+        Double dosePlanejada = this.itens.get(mesCorrente).getDoses();
+        Double diferenca = dosePlanejada - doseJogada;
+
+        if (diferenca != 0) {
+            Double dosePorMes = diferenca / (itens.size() - mesCorrente - 1);
+            for (int i = mesCorrente + 1; i < itens.size(); i++) {
+                ItensPlano item = itens.get(i);
+                item.setDoses(item.getDoses() + dosePorMes);
+            }
+        }
+    }
 }

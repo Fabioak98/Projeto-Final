@@ -15,5 +15,5 @@ import java.util.List;
 @Setter
 public class ItensPlano {
     private Adubo adubo;
-    private List<Double> doses;
+    private Double doses;
 }
